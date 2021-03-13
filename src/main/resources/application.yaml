@@ -9,7 +9,7 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate:
@@ -23,3 +23,6 @@ spring:
     driver-class-name: org.postgresql.Driver
     testWhileIdle: true
     validationQuery: SELECT 1
+lombok:
+  anyConstructor:
+    addConstructorProperties: true
