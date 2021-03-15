@@ -5,6 +5,9 @@ server:
 
 spring:
 
+  jackson:
+    date-format: dd:MM:yyyy
+
   jpa:
     database: POSTGRESQL
     show-sql: true

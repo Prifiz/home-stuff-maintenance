@@ -1,21 +1,27 @@
 package com.github.prifiz.homestuffmaintenance.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "home_stuff")
 public class HomeStuff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private final UUID id;
+    private UUID id;
 
-    private final Date buyDate;
-    private final Date manufacturingDate;
-    private final Date guaranteeExpirationDate;
+    private Long stuffId;
+
+    private LocalDate buyDate;
+    private LocalDate manufacturingDate;
+    private LocalDate guaranteeExpirationDate;
 }
+
