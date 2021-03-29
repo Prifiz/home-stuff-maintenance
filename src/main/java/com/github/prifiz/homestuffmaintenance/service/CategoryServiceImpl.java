@@ -4,12 +4,14 @@ import com.github.prifiz.homestuffmaintenance.model.Category;
 import com.github.prifiz.homestuffmaintenance.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;

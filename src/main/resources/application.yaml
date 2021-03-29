@@ -26,6 +26,23 @@ spring:
     driver-class-name: org.postgresql.Driver
     testWhileIdle: true
     validationQuery: SELECT 1
+
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+#    dynamic: true
+#    connection-timeout: 10000
+#
+#stuff:
+#  rabbitmq:
+#    exchange: stuff.exchange
+#    queue: stuff.queue
+#    routingkey: stuff.routingkey
+
+
+
 lombok:
   anyConstructor:
     addConstructorProperties: true

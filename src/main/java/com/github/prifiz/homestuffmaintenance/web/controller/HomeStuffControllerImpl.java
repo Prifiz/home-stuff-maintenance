@@ -2,9 +2,11 @@ package com.github.prifiz.homestuffmaintenance.web.controller;
 
 import com.github.prifiz.homestuffmaintenance.model.HomeStuff;
 import com.github.prifiz.homestuffmaintenance.service.HomeStuffService;
-import com.github.prifiz.homestuffmaintenance.service.StuffWebClient;
+import com.github.prifiz.homestuffmaintenance.service.client.StuffClient;
 import com.github.prifiz.homestuffmaintenance.web.request.CreateHomeStuffRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +17,11 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class HomeStuffControllerImpl implements HomeStuffController {
 
-    private final StuffWebClient client;
+    @Autowired
+    @Qualifier("stuffWebFluxClient")
+//    @Qualifier("stuffRabbitClient")
+    private StuffClient client;
+
     private final HomeStuffService homeStuffService;
 
     @Override
@@ -27,12 +33,6 @@ public class HomeStuffControllerImpl implements HomeStuffController {
             homeStuff.setBuyDate(request.getBuyDate());
             homeStuff.setGuaranteeExpirationDate(request.getGuaranteeExpirationDate());
             homeStuff.setManufacturingDate(request.getManufacturingDate());
-//            HomeStuff homeStuff = HomeStuff.builder()
-//                    .stuffId(id)
-//                    .buyDate(request.getBuyDate())
-//                    .guaranteeExpirationDate(request.getGuaranteeExpirationDate())
-//                    .manufacturingDate(request.getManufacturingDate())
-//                    .build();
 
             if (homeStuffService.findAllByStuffId(id).isEmpty()) {
                 homeStuffService.create(homeStuff);

@@ -1,6 +1,7 @@
-package com.github.prifiz.homestuffmaintenance.service;
+package com.github.prifiz.homestuffmaintenance.service.client;
 
 import com.github.prifiz.homestuffmaintenance.web.response.StuffResponse;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -9,7 +10,8 @@ import java.io.IOException;
 import java.util.Optional;
 
 @Service
-public class StuffWebClient {
+@Qualifier("stuffWebFluxClient")
+public class StuffWebFluxClient implements StuffClient {
 
     WebClient client = WebClient.create("http://localhost:8080/api/v1");
 
